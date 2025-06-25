@@ -1,8 +1,34 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "School Config";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model GD.Practical.Models.SchoolConfig
+
+<h1 class="display-4 mb-3">School Configuration</h1>
+
+<form asp-action="ConfigForm" asp-controller="Home">
+
+    <div class="row">
+        <div class="col-4">
+            <label for="WorkDays">Weekly Working Days</label>
+            <input class="form-control m-1 mb-2" max="7" min="1" required type="number" asp-for="WorkDays" />
+        </div>
+        <div class="col-4">
+            <label for="TotalSubject">Total Subjects</label>
+            <input class="form-control m-1 mb-2" required type="number" asp-for="TotalSubject" />
+        </div>
+        <div class="col-4">
+            <label for="SubjectPerDay">Subjects Per Day</label>
+            <input class="form-control m-1 mb-4" max="9" min="1" required type="number" asp-for="SubjectPerDay" />
+        </div>
+    </div>
+
+
+
+
+
+
+    <hr />
+
+    <button class="btn btn-primary" type="submit">Next</button>
+</form>

@@ -1,7 +1,13 @@
+using GD.Practical.Database;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<TimetableDbContext>(options =>
+    options.UseInMemoryDatabase("SchoolDb")
+);
 
 var app = builder.Build();
 

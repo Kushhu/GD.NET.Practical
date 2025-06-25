@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Time Table";
+}
+
+@model List<List<Subject>>
+
+<h1 class="display-4 mb-3">Time Table</h1>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @for (var i = 0; i <= Model.Count; i++)
+            {
+                <th>Day @(i+1)</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (List<Subject> row in Model)
+        {
+            <tr>
+                @foreach (Subject subject in row)
+                {
+                    <td>
+                        @subject.Name
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

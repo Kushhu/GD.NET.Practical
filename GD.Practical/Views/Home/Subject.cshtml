@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Subject Config";
+}
+
+<h1 class="display-4 mb-3">Subjects</h1>
+
+<div class="alert alert-primary" role="alert">
+    @ViewData["LimitMessage"]
+</div>
+
+<form asp-action="AddSubjectForm" asp-controller="Home">
+    <div class="row mb-2">
+        <div class="col-4">
+            <input class="form-control" type="text" placeholder="Subject Name" name="Name" />
+        </div>
+        <div class="col-3">
+            <input class="form-control" type="number" placeholder="Total Hours" name="TotalHours" />
+        </div>
+        <button class="btn btn-primary col-1" type="submit">Add</button>  
+        <p class="col-1 align-middle text-danger">@ViewData["LimitLeft"] Left!</p>
+    </div>
+    @if (TempData["OverLimit"] != null)
+    {
+        <div class="alert alert-danger">@TempData["OverLimit"]</div>
+    }
+</form>
+
+
+<h1 class="display-6 mt-3">List</h1>
+
+<form asp-action="GenerateTimetable" asp-controller="Home">
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Total Hours</th>
+        </tr>
+        @foreach (Subject subject in Model)
+        {
+            <tr>
+                <td>
+                    @subject.Name
+                </td>
+                <td>
+                    @subject.TotalHours
+                </td>
+            </tr>
+        }
+    </table>
+
+    <button class="btn btn-primary mt-8" type="submit">Generate</button>
+
+</form>
